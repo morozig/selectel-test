@@ -10,7 +10,6 @@ angular.module('todoApp', [])
             const url = 'http://api.openweathermap.org/data/2.5/weather?'
                 + serializedParams;
             $http.get(url).then(function (response) {
-                console.log(response.data);
                 const kelvin = response.data.main.temp;
                 weather.temp = Math.floor(kelvin - 273.15);
                 const iconId = response.data.weather[0].icon;
@@ -20,4 +19,9 @@ angular.module('todoApp', [])
                 weather.temp = undefined;
             });
         };
+    })
+    .config(function ($sceProvider) {
+        // Completely disable SCE.  For demonstration purposes only!
+        // Do not use in new projects or libraries.
+        $sceProvider.enabled(false);
     });
