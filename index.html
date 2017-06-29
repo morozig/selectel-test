@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="todoApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="weather.js"></script>
+</head>
+
+<body>
+    <div ng-controller="WeatherController as weather">
+        <form ng-submit="weather.search()">
+            <input type="text" ng-model="weather.city" size="30" placeholder="city name">
+            <input class="btn-primary" type="submit" value="search">
+        </form>
+        <p ng-if="weather.temp">
+            <img ng-src="{{weather.icon}}" align="middle">
+            {{weather.temp}} °С, wind: {{weather.wind}} m/s
+        </p>
+    </div>
+</body>
+
+</html>
